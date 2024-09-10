@@ -1,0 +1,36 @@
+import numpy as np
+
+# Buat fungsi bisection
+def bisection(f, a, b, tolerance):
+    # Cek apakah nilai a dan b memenuhi syarat f(a) * f(b) < 0
+    if f(a) * f(b) >= 0:
+        print("Operasi bisection dihentikan")
+        return None
+
+    iter = 1
+    while (b - a) / 2 > tolerance:
+        c = (a + b) / 2  # Hitung titik tengah
+
+        # Cek nilai c
+        if f(c) == 0:
+            return c
+        elif f(a) * f(c) < 0:
+            b = c
+        else:
+            a = c
+        
+        print(f"Iterasi: {iter}, Akar: {c}")
+        iter += 1  # Melanjutkan iterasi
+
+    print(f"Iterasi terakhir: {iter}, Akar: {(a + b) / 2}")
+    return (a + b) / 2
+
+def f(x):
+    return x**3 - x - 2
+
+a = 1
+b = 2
+tolerance = 1e-6
+
+akar = bisection(f, a, b, tolerance)
+print(f"Akar yang ditemukan adalah: {akar}")

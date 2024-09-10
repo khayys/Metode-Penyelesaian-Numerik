@@ -1,0 +1,24 @@
+import numpy as np 
+import matplotlib.pyplot as plt
+
+plt.rcParams['font.size'] = 20
+
+#definisikan per non linear
+def f(x):
+    return x**3 - 5*x**2 + 6*x + 9
+
+# siapkan nilai x
+x = np.linspace(0, 4, 100)
+
+#hitung nilai f(x)
+y = f(x)
+
+#plot fungsi f(x)
+plt.plot(x, y, color = 'blue')
+
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.title('Plot fungsi non linear')
+
+plt.grid(True)
+plt.show()

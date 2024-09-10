@@ -1,0 +1,32 @@
+def newton_raphson(f, f_prime, x0, tol, max_iter):
+    x = x0
+
+    for i in range(max_iter): #mencari akar dengan iterasi
+        fx = f(x)
+        fpx = f_prime(x) #turunan f(x)
+
+        if fpx == 0: #stop jika turunan nol
+            print("Derivatif nol. akar tidak ditemukan")
+            return None
+        x_new = x - fx / fpx
+
+        #menampilkan hasil tiap iterasi
+        print(f"Iterasi: {i+1}, Akar: {x_new}")
+
+        #cek konvergensi
+        if abs(x_new - x) < tol:
+            return x_new
+        
+        x = x_new
+
+def f(x):
+    return x**3 - x - 2
+
+def f_prime(x):
+    return 3*x**2 - 1
+
+tebakan_awal = 1.5
+toleransi = 1e-6
+iterasi_max = 100
+
+akar = newton_raphson(f, f_prime, tebakan_awal, toleransi, iterasi_max)
