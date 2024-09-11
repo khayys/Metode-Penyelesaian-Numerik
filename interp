@@ -1,0 +1,23 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.interpolate import interp1d # inter 1 dimensi
+
+plt.rcParams['font.size'] = 24
+
+# Ensure both arrays have the same size
+jarak = np.array([0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5])
+elev = np.array([150, 148, 153, 151, 156, 154, 159, 157, 162, 160])
+
+interp = interp1d(jarak, elev, kind='linear')
+inter = input("Masukkan interp: ")
+
+jarak_interp = np.linspace(min(jarak), max(jarak), 10000)
+elev_interp = interp(jarak_interp)
+
+plt.plot(jarak_interp, elev_interp, color='red')
+
+plt.scatter(jarak, elev, color='black', s=100)
+
+plt.xlabel('jarak (km)')
+plt.ylabel('Elevasi (m)')
+plt.show()
